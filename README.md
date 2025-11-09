@@ -1,2 +1,2 @@
-# 14-3_stats_2025
-A stats and analytics site for 2025 Wolves U14-3 Girls basketball team.
+# 14-2_stats_2026
+A stats and analytics site for 2026 Wolves U14-2 Girls basketball team.
