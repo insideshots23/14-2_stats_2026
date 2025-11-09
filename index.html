@@ -1061,25 +1061,25 @@
     // --- BOXSCORER JS ---
     (function() {
       const gameSheetUrls = {
-        1: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=744263282&single=true&output=csv",
-        2: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1974101489&single=true&output=csv",
-        3: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=2037182501&single=true&output=csv",
-        4: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=2043093980&single=true&output=csv",
-        5: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=424048681&single=true&output=csv",
-        6: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=621766227&single=true&output=csv",
-        7: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=927531483&single=true&output=csv",
-        8: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1387776174&single=true&output=csv",
-        9: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=561386468&single=true&output=csv",
-        10: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1657520506&single=true&output=csv",
-        11: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=597442958&single=true&output=csv",
-        12: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=636988434&single=true&output=csv",
-        13: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=639390234&single=true&output=csv",
-        14: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=901688254&single=true&output=csv",
-        15: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=955709270&single=true&output=csv",
-        16: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1395079967&single=true&output=csv",
-		17: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=959446674&single=true&output=csv",
-		18: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1747349964&single=true&output=csv",
-		19: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1970850151&single=true&output=csv"
+        1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=744263282&single=true&output=csv",
+        2: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1974101489&single=true&output=csv",
+        3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=2037182501&single=true&output=csv",
+        4: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=2043093980&single=true&output=csv",
+        5: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=424048681&single=true&output=csv",
+        6: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=621766227&single=true&output=csv",
+        7: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=927531483&single=true&output=csv",
+        8: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1387776174&single=true&output=csv",
+        9: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=561386468&single=true&output=csv",
+        10: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1657520506&single=true&output=csv",
+        11: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=597442958&single=true&output=csv",
+        12: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=636988434&single=true&output=csv",
+        13: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=639390234&single=true&output=csv",
+        14: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=901688254&single=true&output=csv",
+        15: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=955709270&single=true&output=csv",
+        16: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1395079967&single=true&output=csv",
+		17: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=959446674&single=true&output=csv",
+		18: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1747349964&single=true&output=csv",
+		19: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1970850151&single=true&output=csv"
       };
       const seasonData = {};
       let currentGame = 19;
