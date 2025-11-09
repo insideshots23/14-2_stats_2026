@@ -1061,25 +1061,25 @@
     // --- BOXSCORER JS ---
     (function() {
       const gameSheetUrls = {
-        1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=744263282",
-        2: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=1974101489",
-        3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=2037182501",
-        4: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=2043093980",
-        5: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=424048681",
-        6: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=621766227",
-        7: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=927531483",
-        8: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=1387776174",
-        9: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=561386468",
-        10: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=1657520506",
-        11: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=597442958",
-        12: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=636988434",
-        13: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=639390234",
-        14: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=901688254",
-        15: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=955709270",
-        16: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=1395079967",
-		17: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=959446674",
-		18: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=1747349964",
-		19: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=1970850151"
+        1: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=744263282&single=true&output=csv",
+        2: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1974101489&single=true&output=csv",
+        3: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=2037182501&single=true&output=csv",
+        4: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=2043093980&single=true&output=csv",
+        5: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=424048681&single=true&output=csv",
+        6: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=621766227&single=true&output=csv",
+        7: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=927531483&single=true&output=csv",
+        8: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1387776174&single=true&output=csv",
+        9: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=561386468&single=true&output=csv",
+        10: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1657520506&single=true&output=csv",
+        11: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=597442958&single=true&output=csv",
+        12: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=636988434&single=true&output=csv",
+        13: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=639390234&single=true&output=csv",
+        14: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=901688254&single=true&output=csv",
+        15: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=955709270&single=true&output=csv",
+        16: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1395079967&single=true&output=csv",
+		17: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=959446674&single=true&output=csv",
+		18: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1747349964&single=true&output=csv",
+		19: "https://docs.google.com/spreadsheets/d/17NehWigbLHsoKMZ0JY9POrLQMxZ8jlaY88nVSLmgNqM/pub?gid=1970850151&single=true&output=csv"
       };
       const seasonData = {};
       let currentGame = 19;
@@ -1338,7 +1338,7 @@ const playerFtPct = player.fta > 0 ? (player.ftm / player.fta * 100).toFixed(1) 
     })();
 // --- STAT LEADERS JS ---
 (function() {
-  const averagesCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=0";
+  const averagesCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=0&single=true&output=csv";
   
   async function fetchAveragesData() {
     try {
@@ -1550,7 +1550,7 @@ topPlayers.forEach((player, index) => {
 	
     // --- AVERAGES TABLE JS ---
     (function() {
-      const averagesCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=0";
+      const averagesCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=0&single=true&output=csv";
       function formatDecimal(num) { return num % 1 === 0 ? num.toFixed(1) : num.toFixed(1); }
 function formatPercentage(made, attempted) {
   if (attempted === 0) return "-";
@@ -1742,7 +1742,7 @@ function formatPercentage(made, attempted) {
 
   async function fetchData() {
     try {
-      const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=0';
+      const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=0&single=true&output=csv';
       const response = await fetch(csvUrl);
       const csvText = await response.text();
       const rows = csvText.split('\n').map(row => row.split(','));
@@ -1913,7 +1913,7 @@ function formatPercentage(made, attempted) {
 })();
     // --- ANALYTICS JS ---
     (function() {
-      const analyticsCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/gviz/tq?tqx=out:csv&gid=0";
+      const analyticsCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1970850151&single=true&output=csv";
       function formatDecimal(num) { return isNaN(num) ? "0.00" : num.toFixed(2); }
 function formatPercentage(num) {
   if (isNaN(num)) return "0.00%";
