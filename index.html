@@ -1725,7 +1725,7 @@ function formatPercentage(made, attempted) {
   ];
   const labels = ["Points", "Rebounds", "Assists", "Steals", "Blocks"];
   const statSuffixes = ["ppg", "rpg", "apg", "spg", "bpg"];
-  const playerNames = ["Piper", "Eden", "Ella", "Makayla", "Isla", "Madyson", "Eva", "Miyavi", "Aeris", "Sophie"];
+  const playerNames = ["Siena", "Tess", "Aeris", "Parker", "Lucy", "Hazel", "Shaina", "Eden", "Madyson", "Sophie"];
   const columnMapping = {
     points: 3,
     rebounds: 6,
@@ -1934,15 +1934,15 @@ function formatPercentage(num) {
           const csvText = await response.text();
           const rows = csvText.split('\n').map(row => row.split(','));
           const playerRows = [
-            { name: "Piper", row: 31 },
-            { name: "Eden", row: 32 },
-            { name: "Ella", row: 33 },
-            { name: "Makayla", row: 34 },
-            { name: "Isla", row: 35 },
-            { name: "Madyson", row: 36 },
-            { name: "Eva", row: 37 },
-            { name: "Miyavi", row: 38 },
-            { name: "Aeris", row: 39 },
+            { name: "Siena", row: 31 },
+            { name: "Tess", row: 32 },
+            { name: "Aeris", row: 33 },
+            { name: "Parker", row: 34 },
+            { name: "Lucy", row: 35 },
+            { name: "Hazel", row: 36 },
+            { name: "Shaina", row: 37 },
+            { name: "Eden", row: 38 },
+            { name: "Madyson", row: 39 },
             { name: "Sophie", row: 40 }
           ];
           const players = [];
