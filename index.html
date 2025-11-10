@@ -8,7 +8,7 @@
 <meta property="og:title" content="2025 Wolves U14-3 Girls stats" />
 <meta property="og:description" content="Boxscores, stats, and analytics for the 2025 Joondalup Wolves U14-3 Girls team, updated weekly." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://joondalup-wolves.github.io/wolves-stats/" />
+<meta property="og:url" content="https://insideshots23.github.io/wolves-stats/" />
 <meta property="og:image" content="https://cdn.nbl1.com.au/spacepod/images/joondalup-wolves.png?bypass" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="2025 Wolves U14-3 Girls stats" />
@@ -1060,25 +1060,25 @@
     // --- BOXSCORER JS ---
     (function() {
       const gameSheetUrls = {
-        1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=797304496&single=true&output=csv",
-        2: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=1379588754&single=true&output=csv",
-        3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=1722787100&single=true&output=csv",
-        4: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=0&single=true&output=csv",
-        5: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=1748576796&single=true&output=csv",
-        6: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=2013793463&single=true&output=csv",
-        7: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=488403667&single=true&output=csv",
-        8: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=1640243385&single=true&output=csv",
-        9: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=690207392&single=true&output=csv",
-        10: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=185294638&single=true&output=csv",
-        11: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=390013824&single=true&output=csv",
-        12: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=516589006&single=true&output=csv",
-        13: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=1873389368&single=true&output=csv",
-        14: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=1120402390&single=true&output=csv",
-        15: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=954827242&single=true&output=csv",
-        16: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=405488937&single=true&output=csv",
-		17: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=2135722273&single=true&output=csv",
-		18: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=1405772409&single=true&output=csv",
-		19: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_Gj_jt5i_wvL07zSs48DPlE_CkkP49G6EnhYcLKKH3tJvn0r9pEOrIySkkc6TJ1dyGHSA2a5GbW7/pub?gid=539165158&single=true&output=csv"
+        1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=744263282&single=true&output=csv",
+        2: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1974101489&single=true&output=csv",
+        3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=2037182501&single=true&output=csv",
+        4: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=2043093980&single=true&output=csv",
+        5: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=424048681&single=true&output=csv",
+        6: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=621766227&single=true&output=csv",
+        7: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=927531483&single=true&output=csv",
+        8: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1387776174&single=true&output=csv",
+        9: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=561386468&single=true&output=csv",
+        10: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1657520506&single=true&output=csv",
+        11: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=597442958&single=true&output=csv",
+        12: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=636988434&single=true&output=csv",
+        13: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=639390234&single=true&output=csv",
+        14: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=901688254&single=true&output=csv",
+        15: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=955709270&single=true&output=csv",
+        16: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1395079967&single=true&output=csv",
+		17: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=959446674&single=true&output=csv",
+		18: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1747349964&single=true&output=csv",
+		19: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1970850151&single=true&output=csv"
       };
       const seasonData = {};
       let currentGame = 19;
