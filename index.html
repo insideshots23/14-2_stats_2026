@@ -28,6 +28,9 @@
       color: white;
       -webkit-font-smoothing: antialiased;
     }
+	.hidden-rounds {
+            display: none; /* This is the rule that hides the content */
+    }
     .header {
       display: flex;
       align-items: center;
@@ -838,7 +841,7 @@
       <span class="season-games-title">Season Fixture</span>
       <ul class="game-list" id="gameList">
         <li data-round="1" class="current">ROUND 1 - TBA</li>
-		  </ul>
+		 <div class="hidden-rounds"> 
         <li data-round="2">ROUND 2 - TBA</li>
         <li data-round="3">ROUND 3 - TBA</li>
         <li data-round="4">ROUND 4 - TBA</li>
@@ -857,7 +860,8 @@
         <li data-round="17">QUARTER FINAL - TBA</li>	
         <li data-round="18">SEMI FINAL - TBA</li>	
         <li data-round="19" >GRAND FINAL - TBA</li>
-      
+		  </div>
+      </ul>
     </div>
   </div>
   <div id="view-stat-leaders" class="main-view">
