@@ -2091,5 +2091,30 @@ function formatPercentage(num) {
       showView(currentView);
     });
   </script>
+	<!-- Footer Section -->
+<footer style="
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ddd;
+  padding: 1.5em 0;
+  background-color: #114232;
+  border-top: 1px solid #1a5a42;
+  margin-top: 2em;
+">
+  <p style="font-weight: bold; letter-spacing: 1px;">CREDITS</p>
+  <p>Platform &amp; Data – Richard Arigore<br>Data – Mark Edmonds</p>
+  <p id="lastUpdated"></p>
+</footer>
+
+<script>
+  // Automatically show today's date in DD/MM/YYYY format
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString('en-AU', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+  document.getElementById('lastUpdated').textContent = `Last update: ${formattedDate}`;
+</script>
 </body>
 </html>
