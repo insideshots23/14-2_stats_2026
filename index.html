@@ -28,10 +28,7 @@
       color: white;
       -webkit-font-smoothing: antialiased;
     }
-	.hidden-rounds {
-            display: none; /* This is the rule that hides the content */
-    }
-    .header {
+	    .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -279,7 +276,9 @@
       #view-roster .player-number { font-size: 15.6px; height: 22px; line-height: 22px; }
       #view-roster .stat-button { min-width: 60px; }
     }
-
+	.hidden-rounds {
+            display: none; /* This is the rule that hides the content */
+    }
     /* --- Boxscores --- */
     #view-boxscores .game-header-container,
     #view-boxscores .boxscore-container,
@@ -1190,7 +1189,7 @@ players.push({
             </div>
         `;
         if (round === 1) {
-          html += `<div class="limited-stats-note">*Only points and fouls were recorded for this game</div>`;
+          html += `<div class="limited-stats-note">Start of the 2026 WABL season</div>`;
         }
         html += `</div>`;
         gameHeaderElement.innerHTML = html;
