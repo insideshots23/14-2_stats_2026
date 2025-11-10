@@ -1,428 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Joondalup Wolves 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-:root{--green:#154734;--accent:#26a69a;--card:#fff;--muted:#6b6b6b}
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:var(--green);color:#fff;-webkit-font-smoothing:antialiased}
-.header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px}
-.header-left{display:flex;gap:12px;align-items:center}
-.logo{height:52px}
-.h-title{font-size:20px;font-weight:600;margin:0}
-.h-sub{font-size:13px;margin:0;opacity:.95}
-.last-upd{font-size:12px;color:#cfeee6;margin-top:6px}
-.menu-btn{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;padding:6px 10px}
-.menu-content{display:none;position:absolute;right:18px;top:68px;background:#fff;color:#333;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.2);min-width:240px;z-index:50}
-.menu-content.show{display:block}
-.menu-item{display:block;padding:12px 16px;text-decoration:none;color:#333;font-weight:600}
-.menu-item.current{background:var(--green);color:#fff}
-.container{max-width:1000px;margin:12px auto;padding:0 12px}
-.card{background:var(--card);color:#333;border-radius:10px;padding:14px;box-shadow:0 4px 18px rgba(0,0,0,.06);margin-bottom:16px}
-.loading{padding:18px;text-align:center;color:var(--muted)}
-.table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{padding:8px;border-bottom:1px solid #eee;text-align:left;white-space:nowrap}
-th{background:var(--green);color:#fff;font-weight:700}
-.player-col{min-width:180px}
-.num-cell{text-align:center;width:50px}
-.totals-row{background:#e9f6f0;font-weight:700}
-.fixture-list{list-style:none;padding:8px;margin:0}
-.fixture-list li{padding:8px;border-bottom:1px solid #eee;cursor:pointer;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fixture-list li.active{background:#e9f6f0;border-left:4px solid var(--green);font-weight:700}
-.grid-leaders{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.leader-card{background:#fff;padding:12px;border-radius:8px;color:#333}
-.leader-title{background:#eaf7f2;color:var(--green);padding:8px;border-radius:6px;text-align:center;font-weight:700;margin-bottom:8px}
-.leader-row{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #f0f0f0}
-.radar-wrap{max-width:820px;margin:0 auto}
-@media (max-width:900px){
-  .grid-leaders{grid-template-columns:repeat(2,1fr)}
-}
-@media (max-width:560px){
-  .header{padding:10px}
-  .logo{height:44px}
-  .grid-leaders{grid-template-columns:1fr}
-  .container{padding:0 8px}
-  th,td{padding:6px;font-size:13px}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joondalup Wolves 2026</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Inter", system-ui, Arial, sans-serif;
+            background: #144d3a;
+            color: #fff;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #144d3a;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .header img {
+            height: 40px;
+            margin-right: 12px;
+        }
+        .header h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .header h2 {
+            font-size: 13px;
+            margin: 0;
+            color: #cfcfcf;
+        }
+        .menu-btn {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            right: 20px;
+            top: 60px;
+            background: #fff;
+            color: #144d3a;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 99;
+        }
+        .menu-item {
+            display: block;
+            padding: 10px 16px;
+            text-decoration: none;
+            color: #144d3a;
+        }
+        .menu-item:hover {
+            background: #e5e5e5;
+        }
+
+        .card {
+            background: #fff;
+            color: #000;
+            margin: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .fixture-list {
+            margin-top: 1rem;
+            text-align: left;
+        }
+        .fixture-item {
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+        .fixture-item:hover, .fixture-item.active {
+            background: #cde4db;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+        }
+        th, td {
+            padding: 6px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            font-size: 13px;
+        }
+        th {
+            background: #144d3a;
+            color: white;
+            font-weight: 500;
+        }
+
+        .stat-leader-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .footer {
+            color: #ccc;
+            font-size: 12px;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        @media (max-width: 600px) {
+            .card { margin: 0.5rem; padding: 0.75rem; }
+            th, td { font-size: 11px; padding: 4px; }
+        }
+    </style>
 </head>
 <body>
-  <div class="header">
-    <div class="header-left">
-      <img class="logo" src="https://sbl.asn.au/wp-content/uploads/sites/2/2020/07/JoondalupWolves-Primary-Logo.png" alt="logo">
-      <div>
-        <div class="h-title">Joondalup Wolves 2026</div>
-        <div class="h-sub">Wolves U14 Girls (Team 2)</div>
-        <div id="lastUpdated" class="last-upd" aria-live="polite"></div>
-      </div>
+
+<div class="header">
+    <img src="logo.png" alt="Wolves Logo">
+    <div>
+        <h1>Joondalup Wolves 2026</h1>
+        <h2>Wolves U14 Girls (Team 2)</h2>
     </div>
-    <div style="position:relative">
-      <button id="menuToggle" class="menu-btn" aria-expanded="false">☰</button>
-      <div id="menuContent" class="menu-content" role="menu" aria-hidden="true">
-        <a href="#" class="menu-item current" data-view="boxscores">Boxscores</a>
+    <button class="menu-btn" id="menuToggle">☰</button>
+    <div class="menu-content" id="menuContent">
+        <a href="#" class="menu-item" data-view="boxscores">Boxscores</a>
         <a href="#" class="menu-item" data-view="stat-leaders">Stat Leaders</a>
         <a href="#" class="menu-item" data-view="averages-table">Averages (Table)</a>
         <a href="#" class="menu-item" data-view="averages-radar">Averages (Radar)</a>
         <a href="#" class="menu-item" data-view="analytics">Analytics</a>
-      </div>
     </div>
-  </div>
+</div>
 
-  <main class="container" id="main">
-    <!-- Boxscores view -->
-    <section id="view-boxscores" class="view">
-      <div id="gameHeader" class="card" style="display:none"></div>
-      <div id="boxscoreCard" class="card"><div class="loading">Loading boxscore & summary…</div></div>
-      <div id="fixtureCard" class="card" style="display:none">
-        <div style="font-weight:700;color:var(--green);text-align:center;margin-bottom:8px">Season Fixture</div>
-        <ul id="fixtureList" class="fixture-list"></ul>
-      </div>
-    </section>
+<div id="content">
+    <div class="card">Loading boxscore & summary...</div>
+</div>
 
-    <!-- Stat Leaders -->
-    <section id="view-stat-leaders" class="view" style="display:none">
-      <div class="card">
-        <div style="font-weight:700;color:var(--green);margin-bottom:12px">2026 Player Stat Leaders</div>
-        <div id="leadersGrid" class="grid-leaders"><div class="loading">Loading leaders…</div></div>
-      </div>
-    </section>
-
-    <!-- Averages Table -->
-    <section id="view-averages-table" class="view" style="display:none">
-      <div id="averagesCard" class="card"><div class="loading">Loading averages…</div></div>
-    </section>
-
-    <!-- Radar -->
-    <section id="view-averages-radar" class="view" style="display:none">
-      <div class="card radar-wrap">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <div style="font-weight:700;color:var(--green)">Player Radar</div>
-          <select id="radarSelect" style="padding:6px;border-radius:6px"></select>
-        </div>
-        <canvas id="radarChart" height="300"></canvas>
-      </div>
-    </section>
-
-    <!-- Analytics -->
-    <section id="view-analytics" class="view" style="display:none">
-      <div id="analyticsCard" class="card"><div class="loading">Loading analytics…</div></div>
-      <div class="card">
-        <div style="font-weight:700;color:var(--green);margin-bottom:8px">Analytics Definitions</div>
-        <div style="font-size:13px;color:#444">
-          <strong>PER</strong> - Player Efficiency Rating · <strong>TS%</strong> - True Shooting % · <strong>PPS</strong> - Points Per Shot · <strong>A/T</strong> - Assist/Turnover
-        </div>
-      </div>
-    </section>
-  </main>
+<div class="footer">
+    <p>Platform & Stats – Richard Arigore<br>
+       Stats – Mark Edmonds</p>
+    <p id="lastUpdated"></p>
+</div>
 
 <script>
-/* ====== Configuration ====== */
-const summaryCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=0&single=true&output=csv";
-const roundCSVs = [
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=744263282&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1974101489&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=2037182501&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=2043093980&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=424048681&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=621766227&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=927531483&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1387776174&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=561386468&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1657520506&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=597442958&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=636988434&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=639390234&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=901688254&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=955709270&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1395079967&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=959446674&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1747349964&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1970850151&single=true&output=csv"
-];
-const CACHE_TTL = 1000 * 60 * 60;
+    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?output=csv';
+    const content = document.getElementById('content');
+    const menuToggle = document.getElementById('menuToggle');
+    const menuContent = document.getElementById('menuContent');
+    const lastUpdated = document.getElementById('lastUpdated');
 
-function nowIso(){ return (new Date()).toISOString(); }
-function saveCache(key, text){ const obj={ts:Date.now(),txt:text}; try{ localStorage.setItem(key, JSON.stringify(obj)); }catch(e){} }
-function loadCache(key){ try{ const j = localStorage.getItem(key); if(!j) return null; const o=JSON.parse(j); if(Date.now()-o.ts > CACHE_TTL) return null; return o.txt; }catch(e){ return null; } }
-function parseCSV(text){
-  const rows=[]; let cur=''; let inQ=false; let row=[];
-  for(let i=0;i<text.length;i++){
-    const ch=text[i];
-    if(ch==='"'){
-      if(inQ && text[i+1]==='"'){ cur+='"'; i++; continue; }
-      inQ=!inQ; continue;
-    }
-    if(ch===',' && !inQ){ row.push(cur); cur=''; continue;}
-    if((ch==='\n' || ch==='\r') && !inQ){
-      if(cur!=='' || row.length>0){ row.push(cur); rows.push(row); row=[]; cur=''; }
-      if(ch==='\r' && text[i+1]==='\n'){ i++; }
-      continue;
-    }
-    cur+=ch;
-  }
-  if(cur!=='' || row.length>0){ row.push(cur); rows.push(row); }
-  return rows.map(r=> r.map(c=> (c||'').toString().trim()));
-}
-function findHeader(rows,start=0){
-  for(let i=start;i<rows.length;i++){
-    const low = rows[i].map(c=> (c||'').toString().toLowerCase());
-    if(low.some(cell=> cell.includes('player')) && low.some(cell=> cell.includes('pts'))) return i;
-    if(low.includes('#') && low.some(cell=> cell.includes('player'))) return i;
-  }
-  return -1;
-}
-function extractTable(rows, headerIdx){
-  if(headerIdx<0) return null;
-  const headers = rows[headerIdx].map(h=> h||'');
-  const data=[];
-  for(let r=headerIdx+1;r<rows.length;r++){
-    const joined = (rows[r]||[]).join('').trim();
-    if(joined==='') break;
-    data.push(rows[r]);
-  }
-  return {headers,data};
-}
-function findFixtureSection(rows){
-  for(let i=0;i<rows.length;i++){
-    const first = (rows[i][0]||'').toString().toLowerCase();
-    if(first.includes('fixture') || first.includes('round') && rows[i].slice(0,4).join('').toLowerCase().includes('round')) return i;
-  }
-  return -1;
-}
-async function fetchText(url, cacheKey){
-  const cached = loadCache(cacheKey);
-  if(cached) return cached;
-  const res = await fetch(url);
-  if(!res.ok) throw new Error('Fetch failed '+res.status);
-  const txt = await res.text();
-  saveCache(cacheKey, txt);
-  return txt;
-}
-function buildTableHTML(headers,data){
-  let html = '<div class="table-wrap"><table><thead><tr>';
-  headers.forEach(h=> html += `<th>${h||''}</th>`);
-  html += '</tr></thead><tbody>';
-  data.forEach(row=>{ html += '<tr>'; for(let i=0;i<headers.length;i++) html += `<td>${row[i]||''}</td>`; html += '</tr>'; });
-  html += '</tbody></table></div>';
-  return html;
-}
-function renderFixtureList(fixtureRows){
-  const ul = document.getElementById('fixtureList');
-  ul.innerHTML='';
-  fixtureRows.forEach((fr, idx)=>{
-    const li = document.createElement('li');
-    li.textContent = (fr[0]||`ROUND ${idx+1}`) + ' - ' + (fr[1]||'TBD');
-    li.dataset.round = idx+1;
-    li.addEventListener('click', ()=> selectRound(idx));
-    ul.appendChild(li);
-  });
-}
-async function selectRound(idx){
-  document.querySelectorAll('#fixtureList li').forEach((el,i)=> el.classList.toggle('active', i===idx));
-  const csvUrl = roundCSVs[idx];
-  const box = document.getElementById('boxscoreCard');
-  box.innerHTML = '<div class="loading">Loading round '+(idx+1)+'...</div>';
-  try{
-    const txt = await fetchText(csvUrl, 'round_'+(idx+1));
-    const rows = parseCSV(txt);
-    const hdr = findHeader(rows,0);
-    const table = hdr>=0? extractTable(rows,hdr): null;
-    let roundTitle = 'ROUND '+(idx+1);
-    let date='', venue='', ourScore='', opScore='', opponent='';
-    for(let r=0;r<Math.min(12,rows.length);r++){
-      for(let c=0;c<Math.min(6, rows[r].length); c++){
-        const cell = (rows[r][c]||'').toString().toLowerCase();
-        if(cell.includes('date') && rows[r][c+1]) date = rows[r][c+1];
-        if(cell.includes('venue') && rows[r][c+1]) venue = rows[r][c+1];
-        if(cell.includes('wolves score') && rows[r][c+1]) ourScore = rows[r][c+1];
-        if(cell.includes('opponent score') && rows[r][c+1]) opScore = rows[r][c+1];
-        if(cell.includes('opponent') && rows[r][c+1] && !opponent) opponent = rows[r][c+1];
-      }
-    }
-    const fixtureLi = document.querySelectorAll('#fixtureList li')[idx];
-    if(fixtureLi){
-      const txt = fixtureLi.textContent.split(' - ')[1];
-      if(txt && !opponent) opponent = txt;
-    }
-    let html = `<div style="text-align:center;color:var(--green);font-weight:700">${roundTitle}</div>`;
-    html += `<div style="text-align:center;color:#666;margin-bottom:8px">${date||''} ${date&&venue? '•':''} ${venue||''}</div>`;
-    html += `<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:8px;background:#f8faf8;margin-bottom:12px">`;
-    html += `<div style="text-align:center;color:#164835"><div style="font-weight:700">Joondalup Wolves</div><div style="font-size:28px;font-weight:800">${ourScore||'-'}</div></div>`;
-    html += `<div style="text-align:center;color:#666">vs<br/><div style="font-weight:700">${opponent||''}</div></div>`;
-    html += `<div style="text-align:center;color:#164835"><div style="font-weight:700">Opponent</div><div style="font-size:28px;font-weight:800">${opScore||'-'}</div></div>`;
-    html += `</div>`;
-    if(table){
-      html += buildTableHTML(table.headers, table.data);
-      const totalRow = rows.find(r=> (r[0]||'').toString().toLowerCase().includes('total'));
-      if(totalRow){
-        html += '<div style="margin-top:8px"><table><tbody><tr class="totals-row">';
-        totalRow.forEach(c=> html += `<td>${c}</td>`);
-        html += '</tr></tbody></table></div>';
-      }
-    } else {
-      html += '<div class="loading">No boxscore table found for this round.</div>';
-    }
-    box.innerHTML = html;
-    document.getElementById('gameHeader').style.display='block';
-    document.getElementById('gameHeader').innerHTML = `<div style="text-align:center;color:var(--green);font-weight:700">${roundTitle}</div>`;
-    document.getElementById('fixtureCard').style.display='block';
-    setTimeout(()=> box.scrollIntoView({behavior:'smooth'}),120);
-  }catch(e){
-    box.innerHTML = '<div class="loading">Failed to load CSV</div>';
-  }
-}
-function buildFromSummary(rows){
-  const avgIdx = rows.findIndex(r=> (r[0]||'').toString().toLowerCase().includes('season averages'));
-  const totIdx = rows.findIndex(r=> (r[0]||'').toString().toLowerCase().includes('season totals'));
-  const anIdx = rows.findIndex(r=> (r[0]||'').toString().toLowerCase().includes('analytics'));
-  let fixtureRows = [];
-  for(let i=0;i<rows.length;i++){
-    const low = (rows[i][0]||'').toString().toLowerCase();
-    if(low.includes('round') && (rows[i+1] && rows[i+1][1])){
-      for(let r=i+1;r<rows.length;r++){
-        const joined = (rows[r]||[]).join('').trim();
-        if(joined==='') break;
-        fixtureRows.push([rows[r][0]||'', rows[r][1]||'']);
-      }
-      break;
-    }
-  }
-  if(fixtureRows.length>0){
-    renderFixtureList(fixtureRows);
-  }
-  let averages=null, analytics=null;
-  if(avgIdx>=0){
-    const hdr = findHeader(rows, avgIdx+1);
-    averages = hdr>=0? extractTable(rows, hdr): null;
-  } else {
-    const hdr = findHeader(rows,0);
-    averages = hdr>=0? extractTable(rows, hdr): null;
-  }
-  if(anIdx>=0){
-    const hdr = findHeader(rows, anIdx+1);
-    analytics = hdr>=0? extractTable(rows,hdr): null;
-  }
-  if(averages){
-    const avgCard = document.getElementById('averagesCard');
-    avgCard.innerHTML = '<div style="font-weight:700;color:var(--green);margin-bottom:8px">Season Averages</div>'+ buildTableHTML(averages.headers, averages.data);
-    buildLeaders(averages);
-    buildRadar(averages);
-  } else {
-    document.getElementById('averagesCard').innerHTML = '<div class="loading">Averages not found</div>';
-    document.getElementById('leadersGrid').innerHTML = '<div class="loading">Averages not found</div>';
-  }
-  if(analytics){
-    const anCard = document.getElementById('analyticsCard');
-    anCard.innerHTML = '<div style="font-weight:700;color:var(--green);margin-bottom:8px">Player Analytics</div>'+ buildTableHTML(analytics.headers, analytics.data);
-  } else {
-    document.getElementById('analyticsCard').innerHTML = '<div class="loading">Analytics not found</div>';
-  }
-}
-function buildLeaders(averages){
-  const statKeys = [
-    {key:'PTS', title:'Points Per Game'},
-    {key:'REB', title:'Rebounds Per Game'},
-    {key:'AST', title:'Assists Per Game'},
-    {key:'STL', title:'Steals Per Game'},
-    {key:'BLK', title:'Blocks Per Game'},
-    {key:'TO',  title:'Turnovers Per Game'},
-    {key:'FG%', title:'Field Goal %'},
-    {key:'FT%', title:'Free Throw %'}
-  ];
-  const headersLow = averages.headers.map(h=> (h||'').toString().toLowerCase());
-  const players = averages.data;
-  const playerIdx = headersLow.findIndex(h=> h.includes('player'))>=0? headersLow.findIndex(h=> h.includes('player')):0;
-  const grid = document.getElementById('leadersGrid'); grid.innerHTML='';
-  statKeys.forEach(stat=>{
-    let idx = headersLow.findIndex(h=> h===stat.key.toLowerCase());
-    if(idx===-1) idx = headersLow.findIndex(h=> h.includes(stat.key.replace('%','').toLowerCase()));
-    const card = document.createElement('div'); card.className='leader-card';
-    card.innerHTML = `<div class="leader-title">${stat.title}</div>`;
-    if(idx===-1){
-      card.innerHTML += '<div style="padding:8px;color:#666">Not available</div>';
-      grid.appendChild(card); return;
-    }
-    const list = players.map(p=> ({name:p[playerIdx]||'', val: parseFloat((p[idx]||'').toString().replace('%','')) || 0, raw: p[idx]||''}));
-    list.sort((a,b)=> b.val - a.val);
-    list.slice(0,4).forEach((t,i)=>{
-      const row = document.createElement('div'); row.className='leader-row';
-      row.innerHTML = `<div>${i+1}. ${t.name}</div><div style="font-weight:700">${t.raw}</div>`;
-      card.appendChild(row);
-    });
-    grid.appendChild(card);
-  });
-}
-let radarChart=null;
-function buildRadar(averages){
-  const headersLow = averages.headers.map(h=> (h||'').toString().toLowerCase());
-  const playerIdx = headersLow.findIndex(h=> h.includes('player'));
-  const players = averages.data.map(r=> ({name:r[playerIdx]||'', vals:['pts','reb','ast','stl','blk'].map(k=> parseFloat(r[ headersLow.findIndex(h=> h.includes(k)) ]||'')||0)}));
-  const sel = document.getElementById('radarSelect'); sel.innerHTML='';
-  players.forEach((p,i)=> { const opt = document.createElement('option'); opt.value = i; opt.text = p.name; sel.appendChild(opt); });
-  function draw(i){
-    const p = players[i];
-    const ctx = document.getElementById('radarChart').getContext('2d');
-    if(radarChart) radarChart.destroy();
-    radarChart = new Chart(ctx,{type:'radar',data:{labels:['PTS','REB','AST','STL','BLK'],datasets:[{label:p.name,data:p.vals,backgroundColor:'rgba(38,166,154,0.12)',borderColor:'#26a69a',pointBackgroundColor:'#26a69a'}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{r:{beginAtZero:true}}}});
-  }
-  if(players.length>0){ draw(0); sel.addEventListener('change', ()=> draw(parseInt(sel.value))); }
-}
-async function init(){
-  const menuToggle = document.getElementById('menuToggle');
-  const menuContent = document.getElementById('menuContent');
-  menuToggle.addEventListener('click', ()=> {
-    const show = menuContent.classList.toggle('show');
-    menuToggle.setAttribute('aria-expanded', show?'true':'false');
-    menuContent.setAttribute('aria-hidden', show?'false':'true');
-  });
-  document.querySelectorAll('.menu-item').forEach(item=> item.addEventListener('click', (e)=>{
-    e.preventDefault();
-    document.querySelectorAll('.view').forEach(v=> v.style.display='none');
-    const v = e.currentTarget.dataset.view;
-    document.getElementById('view-'+v).style.display='block';
-    document.querySelectorAll('.menu-item').forEach(m=> m.classList.remove('current'));
-    e.currentTarget.classList.add('current');
-    menuContent.classList.remove('show');
-    menuToggle.setAttribute('aria-expanded','false');
-    menuContent.setAttribute('aria-hidden','true');
-  }));
-  try{
-    const txt = await fetchText(summaryCSV, 'summary_csv_v1');
-    const rows = parseCSV(txt);
-    buildFromSummary(rows);
-    document.getElementById('lastUpdated').textContent = 'Last updated: ' + (new Date()).toLocaleString();
-    document.getElementById('view-boxscores').style.display='block';
-    document.getElementById('fixtureCard').style.display='block';
-    for(let i=0;i<roundCSVs.length;i++){
-      try{
-        const cached = loadCache('round_'+(i+1));
-        if(cached){
-          const rowsR = parseCSV(cached);
-          const hdr = findHeader(rowsR,0);
-          if(hdr>=0){ selectRound(i); return; }
-        } else {
-          const resp = await fetch(roundCSVs[i], {method:'GET'});
-          if(resp.ok){
-            const t = await resp.text();
-            const rowsR = parseCSV(t);
-            const hdr = findHeader(rowsR,0);
-            if(hdr>=0){ saveCache('round_'+(i+1), t); selectRound(i); return; }
-          }
+    // Menu toggle
+    menuToggle.onclick = () => {
+        menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
+    };
+
+    // Load CSV
+    async function loadCSV() {
+        try {
+            const response = await fetch(sheetURL);
+            const text = await response.text();
+            parseCSV(text);
+            lastUpdated.textContent = "Last Updated: " + new Date().toLocaleString();
+        } catch (e) {
+            content.innerHTML = '<div class="card">Failed to load CSV</div>';
         }
-      }catch(e){}
     }
-    const firstLi = document.querySelectorAll('#fixtureList li')[0];
-    if(firstLi) firstLi.click();
-  }catch(e){
-    document.getElementById('boxscoreCard').innerHTML = '<div class="loading">Failed to load summary CSV</div>';
-    document.getElementById('fixtureCard').style.display='block';
-  }
-}
-init();
+
+    // Parse CSV (fixture + boxscores)
+    function parseCSV(text) {
+        const rows = text.split(/\r?\n/).map(r => r.split(','));
+        const fixtureStart = rows.findIndex(r => r[0] && r[0].toUpperCase() === 'FIXTURE');
+        const fixtureData = rows.slice(fixtureStart + 2, fixtureStart + 20).map(r => ({
+            round: r[0],
+            opponent: r[1],
+            venue: r[2]
+        }));
+
+        let html = `<div class="card"><h3>Season Fixture</h3><div class="fixture-list">`;
+        fixtureData.forEach((f, i) => {
+            html += `<div class="fixture-item" onclick="showBoxscore(${i+1})">${f.round} – ${f.opponent}</div>`;
+        });
+        html += `</div></div>`;
+        content.innerHTML = html;
+    }
+
+    // Placeholder for boxscore load
+    function showBoxscore(round) {
+        content.innerHTML = `
+        <div class="card">
+            <h3>ROUND ${round}</h3>
+            <p><em>Joondalup Wolves vs Opponent</em></p>
+            <p><small>Venue: Editable Venue from Sheet</small></p>
+            <p>Boxscore data will appear here...</p>
+        </div>`;
+    }
+
+    loadCSV();
 </script>
 </body>
 </html>
