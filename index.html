@@ -35,6 +35,12 @@
     .header-group { display: flex; align-items: center; gap: 15px; }
     .main-view { display: none; }
     .main-view.active { display: block; }
+    .season-games { background-color: white; border-radius: 8px; margin: 20px auto; box-shadow: 0 2px 8px rgba(0,0,0,0.1); color: #333; max-width: 800px; padding: 15px 0 20px 0; }
+    .season-games-title { text-align: center; color: #164835; font-size: 16px; font-weight: 700; margin-bottom: 15px; letter-spacing: 0.2px; width: 100%; display: block; }
+    .game-list { list-style-type: none; padding: 0 0 0 12px; margin: 0; }
+    .game-list li { padding: 8px 10px; border-bottom: 1px solid #eee; cursor: pointer; transition: all 0.2s; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-left: 4px; }
+    .game-list li:hover { background-color: #f5f5f5; }
+    .game-list li.current { font-weight: 600; background-color: #e6f2ed; border-left: 4px solid #164835; }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -62,7 +68,32 @@
   <div id="view-boxscores" class="main-view active">
     <div id="gameHeader"></div>
     <div class="boxscore-container" id="boxscore"><div class="loading">Loading boxscore data...</div></div>
+    <div class="season-games">
+      <span class="season-games-title">Season Fixture</span>
+      <ul class="game-list" id="gameList">
+        <li data-round="1">ROUND 1 - Rockingham Flames</li>
+        <li data-round="2">ROUND 2 - Warwick Senators</li>
+        <li data-round="3">ROUND 3 - SouthWest Slammers (Blue)</li>
+        <li data-round="4">ROUND 4 - SouthWest Slammers (Red)</li>
+        <li data-round="5">ROUND 5 - East Perth Eagles</li>
+        <li data-round="6">ROUND 6 - Cockburn Cougars</li>
+        <li data-round="7">ROUND 7 - Eastern Suns</li>
+        <li data-round="8">ROUND 8 - Rockingham Flames</li>
+        <li data-round="9">ROUND 9 - Warwick Senators</li>
+        <li data-round="10">ROUND 10 - SouthWest Slammers (Blue)</li>
+        <li data-round="11">ROUND 11 - SouthWest Slammers (Red)</li>
+        <li data-round="12">ROUND 12 - East Perth Eagles</li>
+        <li data-round="13">ROUND 13 - Cockburn Cougars</li>
+        <li data-round="14">ROUND 14 - Eastern Suns</li>
+        <li data-round="15">ROUND 15 - SouthWest Slammers (Blue)</li>
+        <li data-round="16">ROUND 16 - Warwick Senators</li>
+        <li data-round="17">QUARTER FINAL - Eastern Suns</li>
+        <li data-round="18">SEMI FINAL - SouthWest Slammers (Red)</li>
+        <li data-round="19" class="current">GRAND FINAL - SouthWest Slammers (Blue)</li>
+      </ul>
+    </div>
   </div>
+
   <div id="view-stat-leaders" class="main-view"><div class="loading">Loading stat leaders...</div></div>
   <div id="view-averages-table" class="main-view"><div class="loading">Loading player averages...</div></div>
   <div id="view-averages-radar" class="main-view"><div class="loading">Loading radar chart...</div></div>
