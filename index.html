@@ -4,23 +4,20 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>2026 Wolves U14-2 Girls stats</title>
-<meta property="og:title" content="2026 Wolves U14-2 Girls stats" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 :root{--green:#164835;--accent:#26a69a;--card:#fff;--muted:#666}
-html,body{height:100%}
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:var(--green);color:#fff;padding:12px;-webkit-font-smoothing:antialiased}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:var(--green);color:#fff;padding:12px}
 .header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
 .header-group{display:flex;gap:12px;align-items:center}
 .logo{height:60px}
 .h-title{margin:0;font-size:20px;font-weight:600}
 .h-sub{margin:0;font-size:14px;opacity:.9}
-.nav-menu{position:relative}
-.menu-btn{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;padding:8px 12px;border-radius:6px}
-.menu-content{display:none;position:absolute;right:0;top:40px;background:#fff;color:#333;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.15);min-width:220px;z-index:50;overflow:hidden}
+.menu-btn{background:none;border:none;color:#fff;font-size:22px;cursor:pointer}
+.menu-content{display:none;position:absolute;right:0;top:40px;background:#fff;color:#333;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.15);min-width:220px;z-index:50}
 .menu-content.show{display:block}
 .menu-item{display:block;padding:12px 16px;text-decoration:none;color:#333;font-weight:500}
 .menu-item.current-page{background:var(--green);color:#fff}
@@ -31,28 +28,12 @@ table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{padding:8px;border-bottom:1px solid #eee;text-align:left;white-space:nowrap}
 th{background:var(--green);color:#fff;font-weight:600}
 tbody tr:nth-child(even){background:#fafafa}
-.player-col{min-width:200px}
-.num-cell{text-align:center;width:60px}
-.totals-row{background:#e6f2ed;font-weight:700}
 .season-games{background:#fff;color:#333;border-radius:10px;padding:12px;max-width:820px;margin:12px auto;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-.season-games-title{display:block;text-align:center;color:var(--green);font-weight:700;margin-bottom:12px}
-.game-list{list-style:none;padding-left:12px;margin:0}
-.game-list li{padding:8px;border-bottom:1px solid #eee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;color:#333}
+.game-list li{padding:8px;border-bottom:1px solid #eee;cursor:pointer;color:#333}
 .game-list li.current{font-weight:700;background:#e9f3ef;border-left:4px solid var(--green)}
 .grid-leaders{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;max-width:1000px;margin:18px auto}
 .leader-card{background:#fff;padding:12px;border-radius:8px;color:#333;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.leader-title{color:var(--green);font-weight:700;margin-bottom:8px}
-.leader-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0}
-.leader-row:last-child{border-bottom:none}
-.defs{font-size:13px;color:#444}
-.radar-wrapper{max-width:800px;margin:10px auto;padding:10px;background:#fff;border-radius:8px;color:#333}
-@media (max-width:720px){
-  .logo{height:48px}
-  .card{padding:10px}
-  th,td{padding:6px}
-  .grid-leaders{grid-template-columns:repeat(2,1fr)}
-  .season-games{padding:8px}
-}
+@media (max-width:720px){.logo{height:48px}.grid-leaders{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -64,8 +45,8 @@ tbody tr:nth-child(even){background:#fafafa}
         <div class="h-sub">Wolves U14 Girls (Team 2)</div>
       </div>
     </div>
-    <div class="nav-menu">
-      <button id="menuToggle" class="menu-btn" aria-expanded="false" aria-controls="menuContent">☰</button>
+    <div style="position:relative">
+      <button id="menuToggle" class="menu-btn">☰</button>
       <div id="menuContent" class="menu-content">
         <a class="menu-item current-page" href="#" data-view="boxscores">Boxscores</a>
         <a class="menu-item" href="#" data-view="stat-leaders">Stat Leaders</a>
@@ -76,292 +57,26 @@ tbody tr:nth-child(even){background:#fafafa}
     </div>
   </div>
 
-  <div id="view-boxscores" class="main-view" style="display:block">
-    <div id="gameHeader" class="card" style="display:none"></div>
-    <div id="boxscore" class="card"><div class="loading">Loading boxscore & summary...</div></div>
-    <div class="season-games" id="seasonGames" style="display:none">
-      <span class="season-games-title">Season Fixture</span>
-      <ul class="game-list" id="gameList">
-        <li data-round="1">ROUND 1 - Rockingham Flames</li>
-        <li data-round="2">ROUND 2 - Warwick Senators</li>
-        <li data-round="3">ROUND 3 - SouthWest Slammers (Blue)</li>
-        <li data-round="4">ROUND 4 - SouthWest Slammers (Red)</li>
-        <li data-round="5">ROUND 5 - East Perth Eagles</li>
-        <li data-round="6">ROUND 6 - Cockburn Cougars</li>
-        <li data-round="7">ROUND 7 - Eastern Suns</li>
-        <li data-round="8">ROUND 8 - Rockingham Flames</li>
-        <li data-round="9">ROUND 9 - Warwick Senators</li>
-        <li data-round="10">ROUND 10 - SouthWest Slammers (Blue)</li>
-        <li data-round="11">ROUND 11 - SouthWest Slammers (Red)</li>
-        <li data-round="12">ROUND 12 - East Perth Eagles</li>
-        <li data-round="13">ROUND 13 - Cockburn Cougars</li>
-        <li data-round="14">ROUND 14 - Eastern Suns</li>
-        <li data-round="15">ROUND 15 - SouthWest Slammers (Blue)</li>
-        <li data-round="16">ROUND 16 - Warwick Senators</li>
-        <li data-round="17">QUARTER FINAL - Eastern Suns</li>
-        <li data-round="18">SEMI FINAL - SouthWest Slammers (Red)</li>
-        <li data-round="19" class="current">GRAND FINAL - SouthWest Slammers (Blue)</li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="view-stat-leaders" class="main-view" style="display:none">
-    <div class="grid-leaders" id="leadersGrid"><div class="loading">Loading stat leaders...</div></div>
-  </div>
-
-  <div id="view-averages-table" class="main-view" style="display:none">
-    <div id="averagesTable" class="card"><div class="loading">Loading player averages...</div></div>
-    <div class="card" style="max-width:820px;margin-top:6px">
-      <div class="definition-title">Definitions</div>
-      <div class="defs">
-        <strong>G</strong> - Games played · <strong>PTS</strong> - Points per game · <strong>REB</strong> - Rebounds per game · <strong>AST</strong> - Assists per game
-      </div>
-    </div>
-  </div>
-
-  <div id="view-averages-radar" class="main-view" style="display:none">
-    <div class="radar-wrapper card">
-      <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:10px">
-        <div style="font-weight:700;color:var(--green)">Player Radar</div>
-        <select id="radarPlayerSelect" style="padding:6px;border-radius:6px"></select>
-      </div>
-      <canvas id="radarChart" style="width:100%;height:320px"></canvas>
-    </div>
-  </div>
-
-  <div id="view-analytics" class="main-view" style="display:none">
-    <div id="analyticsTable" class="card"><div class="loading">Loading analytics...</div></div>
-    <div class="card" style="max-width:820px;margin-top:6px">
-      <div class="definition-title">Analytics Definitions</div>
-      <div class="defs">
-        <strong>PER</strong> - Player Efficiency Rating · <strong>TS%</strong> - True Shooting % · <strong>PPS</strong> - Points Per Shot · <strong>A/T</strong> - Assist/Turnover
-      </div>
-    </div>
-  </div>
+  <div id="boxscore" class="card"><div class="loading">Loading boxscore & summary...</div></div>
 
 <script>
+const proxy = "https://api.allorigins.win/get?url=";
 const summaryCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=0&single=true&output=csv";
-const roundCSVs = [
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=744263282&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1974101489&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=2037182501&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=2043093980&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=424048681&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=621766227&single=true&output=csv",
-"https://docs.googledocs.invalid/skip&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1387776174&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=561386468&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1657520506&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=597442958&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=636988434&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=639390234&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=901688254&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=955709270&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRv...&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1395079967&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=959446674&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1747349964&single=true&output=csv",
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1970850151&single=true&output=csv"
-];
-/* Note: a couple of long links were shortened or had small placeholders when copying; if you have the exact list replace any placeholder elements above. */
 
-/* Utility functions (CSV parsing and table extraction) */
-function parseCSV(text){
-  const rows=[]; let cur=''; let inQ=false; let row=[];
-  for(let i=0;i<text.length;i++){
-    const ch=text[i];
-    if(ch==='"'){
-      if(inQ && text[i+1]==='"'){ cur+='"'; i++; continue; }
-      inQ=!inQ; continue;
-    }
-    if(ch===',' && !inQ){ row.push(cur); cur=''; continue; }
-    if((ch==='\\n' || ch==='\\r') && !inQ){
-      if(cur!=='' || row.length>0){ row.push(cur); rows.push(row); row=[]; cur=''; }
-      if(ch==='\\r' && text[i+1]==='\\n'){ i++; }
-      continue;
-    }
-    cur+=ch;
-  }
-  if(cur!=='' || row.length>0){ row.push(cur); rows.push(row); }
-  return rows.map(r=> r.map(c=> (c||'').toString().trim()));
+async function fetchCSV(url){
+  const response = await fetch(proxy + encodeURIComponent(url));
+  const data = await response.json();
+  return data.contents;
 }
-
-function findSectionRow(rows, title){
-  for(let i=0;i<rows.length;i++){
-    const cell = (rows[i][0]||'').toString().toLowerCase();
-    if(cell.startsWith(title.toLowerCase())) return i;
-  }
-  return -1;
-}
-
-function findHeaderAfter(rows,start){
-  for(let i=start;i<rows.length;i++){
-    const low = rows[i].map(c=> (c||'').toString().toLowerCase());
-    if(low.some(cell=> cell.includes('player')) && low.some(cell=> cell.includes('pts'))) return i;
-    if(low.includes('#') && low.some(cell=> cell.includes('player'))) return i;
-  }
-  return -1;
-}
-
-function extractTableFromHeader(rows, headerIndex){
-  const headers = rows[headerIndex].map(h=> h===undefined? '': h.toString());
-  const data = [];
-  for(let r=headerIndex+1;r<rows.length;r++){
-    const joined = (rows[r]||[]).join('').trim();
-    if(joined==='') break;
-    const first = (rows[r][0]||'').toString().toLowerCase();
-    if(first.includes('season totals') || first.includes('season averages') || first.includes('analytics')) break;
-    data.push(rows[r]);
-  }
-  return {headers,data};
-}
-
-/* Table builders */
-function tableHTML(headers,data){
-  let html = '<table><thead><tr>';
-  headers.forEach(h=> html += `<th>${h||''}</th>`);
-  html += '</tr></thead><tbody>';
-  data.forEach(row=>{ html += '<tr>'; for(let i=0;i<headers.length;i++) html += `<td>${row[i] || ''}</td>`; html += '</tr>'; });
-  html += '</tbody></table>'; return html;
-}
-
-/* Fetch and render */
-async function loadSummaryAndRender(){
+function parseCSV(text){const rows=text.split(/\r?\n/).map(r=>r.split(','));return rows;}
+(async()=>{
   try{
-    const txt = await fetch(summaryCSV).then(r=> r.text());
-    const rows = parseCSV(txt);
-    const idxA = findSectionRow(rows,'season averages');
-    const idxT = findSectionRow(rows,'season totals');
-    const idxAn = findSectionRow(rows,'analytics');
-    let averages=null, totals=null, analytics=null;
-    if(idxA>=0){ const h = findHeaderAfter(rows, idxA+1); if(h>=0) averages = extractTableFromHeader(rows,h); }
-    if(idxT>=0){ const h = findHeaderAfter(rows, idxT+1); if(h>=0) totals = extractTableFromHeader(rows,h); }
-    if(idxAn>=0){ const h = findHeaderAfter(rows, idxAn+1); if(h>=0) analytics = extractTableFromHeader(rows,h); }
-    if(averages) document.getElementById('averagesTable').innerHTML = '<h3>Season Averages</h3><div class="table-wrap">'+ tableHTML(averages.headers, averages.data) +'</div>'; else document.getElementById('averagesTable').innerHTML = '<div class="loading">Averages not found</div>';
-    if(analytics) document.getElementById('analyticsTable').innerHTML = '<h3>Player Analytics</h3><div class="table-wrap">'+ tableHTML(analytics.headers, analytics.data) +'</div>'; else document.getElementById('analyticsTable').innerHTML = '<div class="loading">Analytics not found</div>';
-    // leaders and radar - build if averages exists
-    if(averages){
-      buildLeaders(averages);
-      buildRadar(averages);
-    } else {
-      document.getElementById('leadersGrid').innerHTML = '<div class="loading">Averages not found</div>';
-    }
+    const txt=await fetchCSV(summaryCSV);
+    const rows=parseCSV(txt);
+    document.getElementById('boxscore').innerHTML="<pre style='color:black;white-space:pre-wrap;background:white;padding:8px;border-radius:8px;'>"+rows.slice(0,10).map(r=>r.join(' | ')).join('\n')+"</pre>";
   }catch(e){
-    document.getElementById('averagesTable').innerHTML = '<div class="loading">Error loading summary</div>';
-    document.getElementById('analyticsTable').innerHTML = '<div class="loading">Error loading analytics</div>';
-    document.getElementById('leadersGrid').innerHTML = '<div class="loading">Error loading leaders</div>';
+    document.getElementById('boxscore').innerHTML='<div class="loading">Failed to load CSV</div>';
   }
-}
-
-/* Leaders + Radar builders */
-function buildLeaders(averages){
-  const stats = ['PTS','REB','AST','STL','BLK','FG%','3P%','FT%'];
-  const headersLow = averages.headers.map(h=> (h||'').toString().toLowerCase());
-  const players = averages.data;
-  const playerIdx = headersLow.findIndex(h=> h.includes('player'))>=0? headersLow.findIndex(h=> h.includes('player')):0;
-  const grid = document.getElementById('leadersGrid'); grid.innerHTML='';
-  stats.forEach(stat=>{
-    let idx = headersLow.findIndex(h=> h===stat.toLowerCase());
-    if(idx===-1) idx = headersLow.findIndex(h=> h.includes(stat.replace('%','').toLowerCase()));
-    const card = document.createElement('div'); card.className='leader-card'; card.innerHTML = `<div class="leader-title">${stat}</div>`;
-    if(idx===-1){ card.innerHTML += '<div class="defs">Not found</div>'; grid.appendChild(card); return; }
-    const arr = players.map(p=> ({name:p[playerIdx]||'', val: parseFloat((p[idx]||'').toString().replace('%','')) || 0, raw: p[idx]||''}));
-    arr.sort((a,b)=> b.val - a.val);
-    arr.slice(0,4).forEach((t,i)=>{ const r = document.createElement('div'); r.className='leader-row'; r.innerHTML = `<div>${i+1}. ${t.name}</div><div style="font-weight:700">${t.raw}</div>`; card.appendChild(r); });
-    grid.appendChild(card);
-  });
-}
-
-let radarChart = null;
-function buildRadar(averages){
-  const headersLow = averages.headers.map(h=> (h||'').toString().toLowerCase());
-  const players = averages.data.map(r=> ({name: r[ headersLow.findIndex(h=> h.includes('player')) ] || '', vals: ['pts','reb','ast','stl','blk'].map(m=> parseFloat(r[ headersLow.findIndex(h=> h.includes(m)) ]||'') || 0)}));
-  const sel = document.getElementById('radarPlayerSelect'); sel.innerHTML='';
-  players.forEach((p,i)=> { const opt = document.createElement('option'); opt.value=i; opt.text=p.name; sel.appendChild(opt); });
-  function draw(i){ const p = players[i]; const ctx = document.getElementById('radarChart').getContext('2d'); if(radarChart) radarChart.destroy(); radarChart = new Chart(ctx,{type:'radar',data:{labels:['PTS','REB','AST','STL','BLK'],datasets:[{label:p.name,data:p.vals,fill:true,backgroundColor:'rgba(38,166,154,0.12)',borderColor:'#26a69a',pointBackgroundColor:'#26a69a'}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{r:{beginAtZero:true}}}}); }
-  if(players.length>0){ draw(0); sel.addEventListener('change', ()=> draw(parseInt(sel.value))); }
-}
-
-/* Load rounds and populate boxscores */
-async function loadRoundsAndWire(){
-  const games = [];
-  for(let i=0;i<roundCSVs.length;i++){
-    const url = roundCSVs[i];
-    // skip obviously-broken placeholders
-    if(url.includes('invalid') || url.includes('...')){ games.push(null); continue; }
-    try{
-      const txt = await fetch(url).then(r=> r.text());
-      const rows = parseCSV(txt);
-      const hdr = findHeaderAfter(rows, 0);
-      const table = hdr>=0? extractTableFromHeader(rows,hdr): null;
-      // metadata scan
-      const meta = {};
-      for(let r=0;r<Math.min(30, rows.length); r++){
-        for(let c=0;c<Math.min(6, (rows[r]||[]).length); c++){
-          const cell = (rows[r][c]||'').toString().toLowerCase();
-          if(cell.includes('date') && rows[r][c+1]) meta.date = rows[r][c+1];
-          if(cell.includes('venue') && rows[r][c+1]) meta.venue = rows[r][c+1];
-          if(cell.includes('wolves score') && rows[r][c+1]) meta.our_score = rows[r][c+1];
-          if(cell.includes('opponent score') && rows[r][c+1]) meta.op_score = rows[r][c+1];
-          if(cell.includes('opponent') && rows[r][c+1] && !meta.opponent) meta.opponent = rows[r][c+1];
-          if(cell.includes('round') && rows[r][c+1]) meta.round = rows[r][c+1];
-        }
-      }
-      games.push({rows, table, meta, url});
-    }catch(e){
-      games.push(null);
-    }
-  }
-  // wire list
-  const lis = document.querySelectorAll('#gameList li');
-  lis.forEach((li, idx)=> li.addEventListener('click', ()=> {
-    lis.forEach(x=> x.classList.remove('current'));
-    li.classList.add('current');
-    const g = games[idx];
-    if(g && g.table && g.table.data.length>0){
-      document.getElementById('gameHeader').style.display='block';
-      document.getElementById('gameHeader').innerHTML = `<div style="text-align:center;color:var(--green);font-weight:700">${g.meta.round || ('ROUND '+(idx+1))}</div><div style="text-align:center;margin-top:6px">${g.meta.date || ''} · ${g.meta.venue || ''}</div>`;
-      document.getElementById('boxscore').innerHTML = buildGameHTML(g);
-      document.getElementById('seasonGames').style.display='block';
-    } else {
-      document.getElementById('boxscore').innerHTML = '<div class="loading">No boxscore available for this round.</div>';
-    }
-  }));
-  const first = games.findIndex(g=> g && g.table && g.table.data && g.table.data.length>0);
-  if(first>=0) document.querySelectorAll('#gameList li')[first].click();
-}
-
-/* build game HTML */
-function buildGameHTML(game){
-  if(!game || !game.table) return '<div class="loading">Boxscore not available for this game.</div>';
-  const h = game.table.headers; const d = game.table.data; const m = game.meta||{};
-  let html = `<div style="text-align:center;margin-bottom:12px;color:var(--green);font-weight:700">${m.round || ''}</div>`;
-  html += `<div style="text-align:center;margin-bottom:6px">${m.date || ''} · ${m.venue || ''}</div>`;
-  if(m.our_score || m.op_score || m.opponent){
-    html += `<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:8px;background:#f8faf8;margin-bottom:12px">`;
-    html += `<div style="text-align:center;color:#164835"><div style="font-weight:700">Joondalup Wolves</div><div style="font-size:28px;font-weight:800">${m.our_score||'-'}</div></div>`;
-    html += `<div style="text-align:center;color:#666">vs<br/><div style="font-weight:700">${m.opponent||''}</div></div>`;
-    html += `<div style="text-align:center;color:#164835"><div style="font-weight:700">Opponent</div><div style="font-size:28px;font-weight:800">${m.op_score||'-'}</div></div>`;
-    html += `</div>`;
-  }
-  html += '<div class="table-wrap"><table><thead><tr>';
-  h.forEach(col=> html += `<th>${col||''}</th>`);
-  html += '</tr></thead><tbody>';
-  d.forEach(row=> { html += '<tr>'; for(let i=0;i<h.length;i++) html += `<td>${row[i] || ''}</td>`; html += '</tr>'; });
-  html += '</tbody></table></div>';
-  const totalRow = (game.rows||[]).find(r=> (r[0]||'').toString().toLowerCase().includes('total'));
-  if(totalRow){
-    html += '<div style="margin-top:8px"><table><tbody><tr class="totals-row">';
-    totalRow.forEach(c=> html += `<td>${c}</td>`);
-    html += '</tr></tbody></table></div>';
-  }
-  return html;
-}
-
-/* init */
-(async function(){
-  await loadSummaryAndRender();
-  await loadRoundsAndWire();
 })();
 </script>
 </body>
