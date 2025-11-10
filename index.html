@@ -837,25 +837,25 @@
     <div class="season-games">
       <span class="season-games-title">Season Fixture</span>
       <ul class="game-list" id="gameList">
-        <li data-round="1">ROUND 1 - Rockingham Flames</li>
-        <li data-round="2">ROUND 2 - Warwick Senators</li>
-        <li data-round="3">ROUND 3 - SouthWest Slammers (Blue)</li>
-        <li data-round="4">ROUND 4 - SouthWest Slammers (Red)</li>
-        <li data-round="5">ROUND 5 - East Perth Eagles</li>
-        <li data-round="6">ROUND 6 - Cockburn Cougars</li>
-        <li data-round="7">ROUND 7 - Eastern Suns</li>
-        <li data-round="8">ROUND 8 - Rockingham Flames</li>
-        <li data-round="9">ROUND 9 - Warwick Senators</li>
-        <li data-round="10">ROUND 10 - SouthWest Slammers (Blue)</li>
-        <li data-round="11">ROUND 11 - SouthWest Slammers (Red)</li>
-        <li data-round="12">ROUND 12 - East Perth Eagles</li>
-        <li data-round="13">ROUND 13 - Cockburn Cougars</li>
-        <li data-round="14">ROUND 14 - Eastern Suns</li>
-        <li data-round="15">ROUND 15 - SouthWest Slammers (Blue)</li>
-        <li data-round="16">ROUND 16 - Warwick Senators</li>
-        <li data-round="17">QUARTER FINAL - Eastern Suns</li>	
-        <li data-round="18">SEMI FINAL - SouthWest Slammers (Red)</li>	
-        <li data-round="19" class="current">GRAND FINAL - SouthWest Slammers (Blue)</li>		  
+        <li data-round="1">ROUND 1 - TBA</li>
+        <li data-round="2">ROUND 2 - TBA</li>
+        <li data-round="3">ROUND 3 - TBA</li>
+        <li data-round="4">ROUND 4 - TBA</li>
+        <li data-round="5">ROUND 5 - TBA</li>
+        <li data-round="6">ROUND 6 - TBA</li>
+        <li data-round="7">ROUND 7 - TBA</li>
+        <li data-round="8">ROUND 8 - TBA</li>
+        <li data-round="9">ROUND 9 - TBA</li>
+        <li data-round="10">ROUND 10 - TBA</li>
+        <li data-round="11">ROUND 11 - TBA</li>
+        <li data-round="12">ROUND 12 - TBA</li>
+        <li data-round="13">ROUND 13 - TBA</li>
+        <li data-round="14">ROUND 14 - TBA</li>
+        <li data-round="15">ROUND 15 - TBA</li>
+        <li data-round="16">ROUND 16 - TBA</li>
+        <li data-round="17">QUARTER FINAL - TBA</li>	
+        <li data-round="18">SEMI FINAL - TBA</li>	
+        <li data-round="19" class="current">GRAND FINAL - TBA</li>		  
       </ul>
     </div>
   </div>
@@ -1724,7 +1724,7 @@ function formatPercentage(made, attempted) {
   ];
   const labels = ["Points", "Rebounds", "Assists", "Steals", "Blocks"];
   const statSuffixes = ["ppg", "rpg", "apg", "spg", "bpg"];
-  const playerNames = ["Piper", "Eden", "Ella", "Makayla", "Isla", "Madyson", "Eva", "Miyavi", "Aeris", "Sophie"];
+  const playerNames = ["Siena", "Tess", "Aeris", "Parker", "Lucy", "Hazel", "Shaina", "Eden", "Madyson", "TBA"];
   const columnMapping = {
     points: 3,
     rebounds: 6,
@@ -1933,16 +1933,16 @@ function formatPercentage(num) {
           const csvText = await response.text();
           const rows = csvText.split('\n').map(row => row.split(','));
           const playerRows = [
-            { name: "Piper", row: 31 },
-            { name: "Eden", row: 32 },
-            { name: "Ella", row: 33 },
-            { name: "Makayla", row: 34 },
-            { name: "Isla", row: 35 },
-            { name: "Madyson", row: 36 },
-            { name: "Eva", row: 37 },
-            { name: "Miyavi", row: 38 },
-            { name: "Aeris", row: 39 },
-            { name: "Sophie", row: 40 }
+            { name: "Siena", row: 31 },
+            { name: "Tess", row: 32 },
+            { name: "Aeris", row: 33 },
+            { name: "Parker", row: 34 },
+            { name: "Lucy", row: 35 },
+            { name: "Hazel", row: 36 },
+            { name: "Shaina", row: 37 },
+            { name: "Eden", row: 38 },
+            { name: "Madyson", row: 39 },
+            { name: "TBA", row: 40 }
           ];
           const players = [];
           for (const player of playerRows) {
