@@ -1,94 +1,210 @@
-/* ---------- Robust fixture extraction and rendering ---------- */
-/* Call: const fixtureRows = extractFixtureRows(rows); renderFixtureList(fixtureRows); */
-
-function extractFixtureRows(rows){
-  // rows: array of arrays (CSV parsed)
-  // returns array of rows: [[round, opponent, venue], ...]
-  const out = [];
-
-  // helper to normalize a cell
-  const norm = (s)=> (s||'').toString().trim().toLowerCase();
-
-  // 1) Try to find a header row that contains 'round' and 'opponent' (or 'fixture')
-  let headerIdx = -1;
-  for(let i=0;i<rows.length;i++){
-    const row = rows[i].map(c=> norm(c));
-    if(row.some(c=> c === 'fixture' || c.includes('fixture'))){
-      headerIdx = i;
-      break;
-    }
-    if(row.some(c=> c.indexOf('round') !== -1) && (row.some(c=> c.indexOf('opponent') !== -1) || row.some(c=> c.indexOf('fixture') !== -1))){
-      headerIdx = i;
-      break;
-    }
-  }
-
-  // 2) If header found, detect which columns are Round / Opponent / Venue
-  if(headerIdx >= 0){
-    const headerRow = rows[headerIdx].map(c=> (c||'').toString().trim());
-    const headerLow = headerRow.map(h=> norm(h));
-    const roundCol = headerLow.findIndex(h=> h.includes('round') || h === '#' );
-    const opponentCol = headerLow.findIndex(h=> h.includes('opponent') || h.includes('oppo') || h.includes('opponent/team') || h.includes('opponent name'));
-    const venueColCandidates = ['venue','location','ground','court','arena'];
-    let venueCol = -1;
-    for(const v of venueColCandidates){
-      const idx = headerLow.findIndex(h=> h.includes(v));
-      if(idx !== -1){ venueCol = idx; break; }
-    }
-
-    // start reading rows after headerIdx
-    for(let r = headerIdx+1; r < rows.length; r++){
-      const line = rows[r];
-      const joined = (line || []).join('').trim();
-      if(!joined) break; // stop at first empty row
-      // sanity check: if line seems to be player rows (contains 'pts' or many empty cells), skip
-      const lowLine = line.map(c=> norm(c)).join(' ');
-      if(lowLine.includes('player') && lowLine.includes('pts')) break;
-
-      const roundVal = (roundCol >= 0 ? (line[roundCol]||'').toString().trim() : (line[0]||'').toString().trim());
-      const opponentVal = (opponentCol >= 0 ? (line[opponentCol]||'').toString().trim() : (line[1]||'').toString().trim());
-      const venueVal = (venueCol >= 0 ? (line[venueCol]||'').toString().trim() : (line[2]||'').toString().trim());
-
-      // if row doesn't contain either round or opponent, treat as end of fixture block
-      if(!(roundVal || opponentVal)) break;
-
-      out.push([ roundVal || '', opponentVal || '', venueVal || '' ]);
-    }
-  }
-
-  // 3) Fallback: sometimes the sheet lists fixtures in a fixed offset (e.g., lines 51..70)
-  if(out.length === 0){
-    // try to find a block where column 0 looks like "ROUND" or starts with a number 1..20 and col1 non-empty
-    for(let start=0; start < rows.length - 2; start++){
-      const a = (rows[start]||[])[0] || '';
-      const b = (rows[start+1]||[])[0] || '';
-      const c = (rows[start+2]||[])[0] || '';
-      // look for a repeating pattern with numbers or 'ROUND' header
-      if( (/^round/i.test(a) && rows[start+1] && (rows[start+1][1] || rows[start+1][2])) || (/^\d+$/.test((rows[start+1]||[])[0]) && (rows[start+1]||[])[1]) ){
-        // collect several rows downward until blank
-        for(let r = start+1; r < rows.length; r++){
-          const joined = (rows[r]||[]).join('').trim();
-          if(!joined) break;
-          const roundVal = (rows[r][0]||'').toString().trim();
-          const opponentVal = (rows[r][1]||'').toString().trim();
-          const venueVal = (rows[r][2]||'').toString().trim();
-          if(roundVal || opponentVal) out.push([roundVal, opponentVal, venueVal]);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joondalup Wolves 2026</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Inter", system-ui, Arial, sans-serif;
+            background: #144d3a;
+            color: #fff;
+            padding: 0;
         }
-        if(out.length) break;
-      }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #144d3a;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .header img {
+            height: 40px;
+            margin-right: 12px;
+        }
+        .header h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .header h2 {
+            font-size: 13px;
+            margin: 0;
+            color: #cfcfcf;
+        }
+        .menu-btn {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            right: 20px;
+            top: 60px;
+            background: #fff;
+            color: #144d3a;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 99;
+        }
+        .menu-item {
+            display: block;
+            padding: 10px 16px;
+            text-decoration: none;
+            color: #144d3a;
+        }
+        .menu-item:hover {
+            background: #e5e5e5;
+        }
+
+        .card {
+            background: #fff;
+            color: #000;
+            margin: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .fixture-list {
+            margin-top: 1rem;
+            text-align: left;
+        }
+        .fixture-item {
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+        .fixture-item:hover, .fixture-item.active {
+            background: #cde4db;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+        }
+        th, td {
+            padding: 6px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            font-size: 13px;
+        }
+        th {
+            background: #144d3a;
+            color: white;
+            font-weight: 500;
+        }
+
+        .stat-leader-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .footer {
+            color: #ccc;
+            font-size: 12px;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        @media (max-width: 600px) {
+            .card { margin: 0.5rem; padding: 0.75rem; }
+            th, td { font-size: 11px; padding: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="logo.png" alt="Wolves Logo">
+    <div>
+        <h1>Joondalup Wolves 2026</h1>
+        <h2>Wolves U14 Girls (Team 2)</h2>
+    </div>
+    <button class="menu-btn" id="menuToggle">☰</button>
+    <div class="menu-content" id="menuContent">
+        <a href="#" class="menu-item" data-view="boxscores">Boxscores</a>
+        <a href="#" class="menu-item" data-view="stat-leaders">Stat Leaders</a>
+        <a href="#" class="menu-item" data-view="averages-table">Averages (Table)</a>
+        <a href="#" class="menu-item" data-view="averages-radar">Averages (Radar)</a>
+        <a href="#" class="menu-item" data-view="analytics">Analytics</a>
+    </div>
+</div>
+
+<div id="content">
+    <div class="card">Loading boxscore & summary...</div>
+</div>
+
+<div class="footer">
+    <p>Platform & Stats – Richard Arigore<br>
+       Stats – Mark Edmonds</p>
+    <p id="lastUpdated"></p>
+</div>
+
+<script>
+    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?output=csv';
+    const content = document.getElementById('content');
+    const menuToggle = document.getElementById('menuToggle');
+    const menuContent = document.getElementById('menuContent');
+    const lastUpdated = document.getElementById('lastUpdated');
+
+    // Menu toggle
+    menuToggle.onclick = () => {
+        menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
+    };
+
+    // Load CSV
+    async function loadCSV() {
+        try {
+            const response = await fetch(sheetURL);
+            const text = await response.text();
+            parseCSV(text);
+            lastUpdated.textContent = "Last Updated: " + new Date().toLocaleString();
+        } catch (e) {
+            content.innerHTML = '<div class="card">Failed to load CSV</div>';
+        }
     }
-  }
 
-  // 4) final tidy: normalize round labels like '1' -> 'ROUND 1' if necessary
-  return out.map((r, i) => {
-    let rr = r[0] ? r[0].toString().trim() : '';
-    if(/^\d+$/.test(rr)) rr = 'ROUND ' + rr;
-    if(/^round\s*\d+/i.test(rr) === false && rr === '') rr = 'ROUND ' + (i+1);
-    return [ rr, r[1]||'TBD', r[2]||'Venue TBA' ];
-  });
-}
+    // Parse CSV (fixture + boxscores)
+    function parseCSV(text) {
+        const rows = text.split(/\r?\n/).map(r => r.split(','));
+        const fixtureStart = rows.findIndex(r => r[0] && r[0].toUpperCase() === 'FIXTURE');
+        const fixtureData = rows.slice(fixtureStart + 2, fixtureStart + 20).map(r => ({
+            round: r[0],
+            opponent: r[1],
+            venue: r[2]
+        }));
 
-/* Example usage in your flow after you parse CSV into 'rows': 
-   const fixtureRows = extractFixtureRows(rows);
-   renderFixtureList(fixtureRows);
-*/
+        let html = `<div class="card"><h3>Season Fixture</h3><div class="fixture-list">`;
+        fixtureData.forEach((f, i) => {
+            html += `<div class="fixture-item" onclick="showBoxscore(${i+1})">${f.round} – ${f.opponent}</div>`;
+        });
+        html += `</div></div>`;
+        content.innerHTML = html;
+    }
+
+    // Placeholder for boxscore load
+    function showBoxscore(round) {
+        content.innerHTML = `
+        <div class="card">
+            <h3>ROUND ${round}</h3>
+            <p><em>Joondalup Wolves vs Opponent</em></p>
+            <p><small>Venue: Editable Venue from Sheet</small></p>
+            <p>Boxscore data will appear here...</p>
+        </div>`;
+    }
+
+    loadCSV();
+</script>
+</body>
+</html>
