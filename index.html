@@ -1168,6 +1168,7 @@ players.push({
         const gameHeaderElement = document.getElementById('gameHeader');
         let html = `
           <div class="game-header-container">
+		    <div class="game-round">${metadata.round || `ROUND ${round}`}</div>
             <div class="game-meta">
               ${metadata.date || ''} • ${metadata.venue || ''}
             </div>
