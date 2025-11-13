@@ -839,7 +839,11 @@
     <div class="season-games">
       <span class="season-games-title">Season Fixture</span>
       <ul class="game-list" id="gameList">
-        <li data-round="1" class="current">ROUND 1 - WILLETON TIGERS</li>
+		<li data-round="SC1" class="current">STATE CHAMPS 1 - TBA</li>
+		<li data-round="SC2">STATE CHAMPS 2 - TBA</li>
+		<li data-round="SC3" >STATE CHAMPS 3 - TBA</li>
+		<li data-round="SC4">STATE CHAMPS 4 - TBA</li>
+        <li data-round="1" >ROUND 1 - WILLETON TIGERS</li>
 		<li data-round="2">ROUND 2 - WARWICK SENATORS</li>
         <div class="hidden-rounds"> 
 		<li data-round="3">ROUND 3 - TBA</li>
@@ -1064,6 +1068,10 @@
     // --- BOXSCORER JS ---
     (function() {
       const gameSheetUrls = {
+		SC1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1946323606&single=true&output=csv",
+        SC2: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=2034737335&single=true&output=csv",
+        SC3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=846501099&single=true&output=csv",
+        SC4: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1053680405&single=true&output=csv",
         1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=744263282&single=true&output=csv",
         2: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=1974101489&single=true&output=csv",
         3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqOh5xyCZbHjcmDGOh8XHcXmLgilhO-XArsvjicJfDTJjNSS10OigMRLMDgBAdheLj1xcr2ud_JbsF/pub?gid=2037182501&single=true&output=csv",
